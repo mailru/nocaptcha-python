@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Language" content="ru" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
+    {% block head %}
+    {% endblock %}
+    </head>
+<body style="width: 40em;">
+{% block body %}
+
+{% if messages %}
+{% for x in messages %}
+    {% if forloop.first %}<h2>Сообщения</h2><ul>{% endif %}
+    <li>{{ x.tags }}: {{ x }}</li>
+    {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if request.path != "/" %}
+    <a href="{% url "demo:index" %}"><<< Назад</a>
+{% endif %}
+
+<h1>{% block heading %}ДЕМО{% endblock %}</h1>
+{% block content %}
+    <ul>
+        <li><a href="{% url "demo:cp" %}">Ручное встраивание через боевой сервер</a></li>
+        <li><a href="{% url "demo:cd" %}">Ручное встраивание через девелоперский сервер</a></li>
+        <li><a href="{% url "demo:lp" %}">Встраивание библиотекой через боевой сервер</a></li>
+        <li><a href="{% url "demo:ld" %}">Встраивание библиотекой через девелоперский сервер</a></li>
+    </ul>
+{% endblock %}
+
+{% endblock %}
+</body>
+</html>

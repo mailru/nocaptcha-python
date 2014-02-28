@@ -1,0 +1,7 @@
+{% extends "form.html" %}
+
+
+{% block head %}
+    {{ display_captcha|safe }}
+    {{ block.super }}
+{% endblock %}

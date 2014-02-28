@@ -1,0 +1,7 @@
+{% extends "form.html" %}
+
+
+{% block head %}
+    <script src="{{ server_url }}/captcha?public_key={{ public_key }}" type="text/javascript"></script>
+    {{ block.super }}
+{% endblock %}
