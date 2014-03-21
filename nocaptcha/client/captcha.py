@@ -14,7 +14,7 @@ class CaptchaError(Exception):
 def check_captcha(private_key, captcha_id, captcha_value, **kwargs):
     """
     Returns True if captcha is valid
-    Or raise CaptchagitError exception with description
+    Or raise CaptchaError exception with description
     """
     result, error = None, None
     params = urllib.urlencode({
@@ -68,6 +68,6 @@ def display_captcha(public_key, **kwargs):
     public_key - The public api key
     """
 
-    return '<script src="{url}" type="text/javascript"></script>'.format(
+    return '<script async src="{url}" type="text/javascript"></script>'.format(
         url=source_captcha(public_key, **kwargs),
     )
