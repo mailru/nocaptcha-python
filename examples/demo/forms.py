@@ -17,8 +17,8 @@ class BaseForm(forms.Form):
         try:
             captcha.check_captcha(
                 self.private_key,
-                self.data.get('nocaptcha_id'),
-                self.data.get('nocaptcha_value'),
+                self.data.get('captcha_id'),
+                self.data.get('captcha_value'),
                 self.is_dev,
             )
         except captcha.CaptchaError as e:
